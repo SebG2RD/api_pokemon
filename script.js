@@ -1,5 +1,6 @@
 const baseUrl = "https://tyradex.vercel.app/api/v1/pokemon";
-if (baseUrl !== null) {
+
+if (baseUrl) {
   const container = document.querySelector(".container");
   if (container) {
     fetch(baseUrl)
@@ -12,7 +13,7 @@ if (baseUrl !== null) {
       .then((data) => {
         console.log("Voici les données reçues :", data);
         if (Array.isArray(data)) {
-          data.forEach((item) => {
+          data.slice(0, 20).forEach((item) => {
             const pokemonCard = document.createElement("div");
             pokemonCard.classList.add("pokemon-card");
 
@@ -35,7 +36,6 @@ if (baseUrl !== null) {
 
             const pokemonNameJapanese = document.createElement("p");
             pokemonNameJapanese.textContent = `Nom japonais : ${item.name.jp}`;
-
             container.appendChild(pokemonCard);
             pokemonCard.appendChild(pokemonName);
             pokemonCard.appendChild(pokemonImage);
