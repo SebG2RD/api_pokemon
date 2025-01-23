@@ -15,15 +15,34 @@ if (baseUrl !== null) {
           data.forEach((item) => {
             const pokemonCard = document.createElement("div");
             pokemonCard.classList.add("pokemon-card");
-            pokemonCard.innerHTML = `
-            <h2>${item.name.fr}</h2>
-            <img src="${item.sprites.regular}" alt="${item.name.fr}" class="pokemon-image">
-            <p><strong>Catégorie :</strong> ${item.category}</p>
-            <p><strong>Génération :</strong> ${item.generation}</p>
-            <p>Nom anglais : ${item.name.en}</p>
-            <p>Nom japonais : ${item.name.jp}</p>
-            `;
+
+            const pokemonName = document.createElement("h2");
+            pokemonName.textContent = item.name.fr;
+
+            const pokemonImage = document.createElement("img");
+            pokemonImage.classList.add("pokemon-image");
+            pokemonImage.src = item.sprites.regular;
+            pokemonImage.alt = item.name.fr;
+
+            const pokemonCategory = document.createElement("p");
+            pokemonCategory.textContent = `Catégorie : ${item.category}`;
+
+            const pokemonGeneration = document.createElement("p");
+            pokemonGeneration.textContent = `Génération : ${item.generation}`;
+
+            const pokemonNameEnglish = document.createElement("p");
+            pokemonNameEnglish.textContent = `Nom anglais : ${item.name.en}`;
+
+            const pokemonNameJapanese = document.createElement("p");
+            pokemonNameJapanese.textContent = `Nom japonais : ${item.name.jp}`;
+
             container.appendChild(pokemonCard);
+            pokemonCard.appendChild(pokemonName);
+            pokemonCard.appendChild(pokemonImage);
+            pokemonCard.appendChild(pokemonCategory);
+            pokemonCard.appendChild(pokemonGeneration);
+            pokemonCard.appendChild(pokemonNameEnglish);
+            pokemonCard.appendChild(pokemonNameJapanese);
           });
         } else {
           console.error("Erreur : les données reçues ne sont pas un tableau.");
