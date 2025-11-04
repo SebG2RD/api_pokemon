@@ -1,51 +1,260 @@
+/* Réinitialisation et styles de base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Titre principal avec style moderne */
+.main-title {
+  text-align: center;
+  font-size: 48px;
+  font-weight: 800;
+  margin: 30px 0;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  letter-spacing: 2px;
+  animation: fadeIn 0.8s ease-out;
+}
+
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 32px;
+    margin: 20px 0;
+  }
+}
+
+/* Style pour le conteneur principal */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Cartes de Pokémon avec design moderne */
 .pokemon-card {
-  width: 300px;
+  width: 320px;
   display: flex;
   flex-direction: column;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin: 10px;
-  padding: 15px;
-  background-color: #f9f9f9;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 20px;
+  margin: 0;
+  padding: 25px;
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Effet de survol sur les cartes */
+.pokemon-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Effet de brillance au survol */
+.pokemon-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: rotate(45deg);
+  transition: all 0.5s;
+  opacity: 0;
+}
+
+.pokemon-card:hover::before {
+  opacity: 1;
+  animation: shine 0.5s ease-in-out;
+}
+
+@keyframes shine {
+  0% {
+    top: -50%;
+    left: -50%;
+  }
+  100% {
+    top: 150%;
+    left: 150%;
+  }
+}
+
+/* Style pour le nom du Pokémon */
+.pokemon-card h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  text-align: center;
+  text-transform: capitalize;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Image principale du Pokémon */
 .pokemon-image {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 10px;
+  transition: transform 0.3s ease;
 }
 
+.pokemon-card:hover .pokemon-image {
+  transform: scale(1.05) rotate(2deg);
+}
+
+/* Style pour les informations du Pokémon */
+.pokemon-card p {
+  font-size: 14px;
+  color: #555;
+  margin: 8px 0;
+  padding: 8px 12px;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 8px;
+  border-left: 3px solid #667eea;
+  transition: all 0.3s ease;
+}
+
+.pokemon-card p:hover {
+  background: rgba(102, 126, 234, 0.2);
+  transform: translateX(5px);
+}
+
+/* Conteneur de recherche avec design moderne */
 .search-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  background-color: #f9f9f9;
-  width: 50%;
-  margin: 0 auto;
-  input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    margin-right: 10px;
-  }
+  margin-bottom: 30px;
+  padding: 25px;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto 30px;
 }
 
+/* Champ de recherche moderne */
+.search-container input[type="text"] {
+  width: 100%;
+  padding: 15px 20px;
+  border: 2px solid #e0e0e0;
+  border-radius: 50px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: white;
+  outline: none;
+}
+
+.search-container input[type="text"]:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+  transform: scale(1.02);
+}
+
+.search-container input[type="text"]::placeholder {
+  color: #999;
+}
+
+/* Conteneur des sprites (versions différentes) */
 .pokemon-sprites-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
+  margin-top: 15px;
+  padding: 15px;
+  background: linear-gradient(
+    135deg,
+    rgba(102, 126, 234, 0.1) 0%,
+    rgba(118, 75, 162, 0.1) 100%
+  );
+  border-radius: 15px;
 }
+
+/* Sprites individuels avec effet de survol */
 .pokemon-sprites,
 .pokemon-sprites-shiny,
 .pokemon-sprites-gmax {
-  width: 100px;
-  height: 100px;
-  border-radius: 8px;
+  width: 90px;
+  height: 90px;
+  border-radius: 12px;
+  background: white;
+  padding: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.pokemon-sprites:hover,
+.pokemon-sprites-shiny:hover,
+.pokemon-sprites-gmax:hover {
+  transform: scale(1.15) rotate(5deg);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+  z-index: 10;
+  position: relative;
+}
+
+/* Animation d'apparition pour les cartes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pokemon-card {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Responsive design pour les petits écrans */
+@media (max-width: 768px) {
+  .pokemon-card {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .search-container {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .container {
+    padding: 10px;
+    gap: 15px;
+  }
 }

@@ -14,7 +14,7 @@ if (baseUrl) {
       .then((data) => {
         // console.log("Voici les données reçues :", data);
         if (Array.isArray(data)) {
-          data.slice(0, 150).forEach((item) => {
+          data.slice(0, 200).forEach((item) => {
             const pokemonCard = document.createElement("div");
             pokemonCard.classList.add("pokemon-card");
 
